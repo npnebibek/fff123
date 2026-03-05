@@ -110,26 +110,27 @@
   const yesBtn = document.querySelector('.btn-yes');
   const popup = document.getElementById('popup');
 
-  // Make No button run away
-  noBtn.addEventListener('mouseenter', () => {
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
+function moveNoButton() {
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
 
-    const maxX = window.innerWidth - btnWidth;
-    const maxY = window.innerHeight - btnHeight;
+  const maxX = window.innerWidth - btnWidth;
+  const maxY = window.innerHeight - btnHeight;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
 
-    noBtn.style.position = 'fixed';
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
-  });
+  noBtn.style.position = 'fixed';
+  noBtn.style.left = randomX + 'px';
+  noBtn.style.top = randomY + 'px';
+}
 
-  // Show popup when Yes is clicked
+noBtn.addEventListener('mouseenter', moveNoButton);
+noBtn.addEventListener('touchstart', moveNoButton);
+noBtn.addEventListener('click', moveNoButton);
+
   yesBtn.addEventListener('click', () => {
     popup.classList.add('show');
-    // Auto hide after 2 seconds
     setTimeout(() => popup.classList.remove('show'), 2000);
   });
 </script>
